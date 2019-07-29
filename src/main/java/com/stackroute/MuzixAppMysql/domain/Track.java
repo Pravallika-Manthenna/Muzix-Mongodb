@@ -1,47 +1,3 @@
-//package com.stackroute.MuzixAppMysql.domain;
-//
-//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-//import lombok.AllArgsConstructor;
-//import lombok.Builder;
-//import lombok.Data;
-//import lombok.NoArgsConstructor;
-//import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-//
-//import javax.persistence.*;
-//
-//@Entity
-//@Table
-//@Data
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Builder
-//@EntityListeners(AuditingEntityListener.class)
-//@JsonIgnoreProperties(ignoreUnknown = true)
-//public class User {
-//
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private int id;
-//
-//    private String name;
-//
-//    private String artist;
-//
-//    private String url;
-//
-//    private String streamable;
-//
-//    private int listeners;
-//
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-//
-//}
 package com.stackroute.MuzixAppMysql.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -53,20 +9,16 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
-
-//@Entity
-//@Table(name = "Track")
 @Data
 @NoArgsConstructor
-//@AllArgsConstructor
-//@Builder
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Document
+@Document //document annotation is used 
 public class Track {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    //declaring variables
     private int id;
 
     private String name;
@@ -79,6 +31,7 @@ public class Track {
 
     private int listeners;
 
+    //generating setters and getters
     public String getTest() {
         return test;
     }
@@ -138,6 +91,7 @@ public class Track {
         this.id = id;
     }
 
+    //generating construtor for the declared variables
     public Track(int id, String name, String artist, String url, String streamable, int listeners) {
         this.id = id;
         this.name = name;
