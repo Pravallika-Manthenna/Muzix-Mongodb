@@ -6,21 +6,23 @@ import com.stackroute.MuzixAppMysql.exceptions.TrackNotFoundException;
 import com.stackroute.MuzixAppMysql.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
+//service annotation is used to make this class as a service class
 @Service
 public class TrackServiceImpl implements TrackService{
 
     TrackRepository trackRepository;
 
+      //autowired annotation is used 
     @Autowired
     public TrackServiceImpl(TrackRepository trackRepository)
     {
         this.trackRepository = trackRepository;
     }
 
+        //implementation of save track method
     @Override
     public Track saveTrack(Track track) throws TrackAlreadyExistsException {
 
@@ -37,12 +39,16 @@ public class TrackServiceImpl implements TrackService{
         return savedTrack;
     }
 
+    
+    //implementation of get all tracks method
     @Override
     public List<Track> getAllTracks() {
 
         return trackRepository.findAll();
     }
 
+    //track by name is not supported in mongodb
+    
 //    @Override
 //    public List<Track> getTracksByName(String name) {
 //
@@ -50,6 +56,7 @@ public class TrackServiceImpl implements TrackService{
 //
 //    }
 
+    //implementation of update tracks method
     public Track updateTrack(Track track, int id) throws TrackNotFoundException
     {
         Optional<Track> track1 = trackRepository.findById(id);
@@ -65,6 +72,7 @@ public class TrackServiceImpl implements TrackService{
         return savedTrack;
     }
 
+        //implementation of delete track method
     public boolean deleteTrack(int id) throws TrackNotFoundException
     {
         Optional<Track> track1 = trackRepository.findById(id);
@@ -87,6 +95,8 @@ public class TrackServiceImpl implements TrackService{
         }
     }
 
+    //serach tracks is not supported in mongodb
+    
 //    @Override
 //    public List<Track> searchTracks(String searchString) {
 //
